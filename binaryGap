@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int binaryGap(int N) {
+        int mx = 1;
+        int ln = -1e9;
+        while(N) {
+            if(N & 1) {
+                mx = max(ln, mx);
+                ln = 1;
+            }
+            N >>= 1;
+            ln++;
+        }
+        return mx - 1;
+    }
+};

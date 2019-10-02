@@ -1,0 +1,43 @@
+class Solution {
+public:
+    vector<int> selfDividingNumbers(int left, int right) {
+
+        vector<int> selfDividingNumbers;
+        int counter=0;
+        for(int i=left;i<=right;i++)
+        {
+            if(i>=0 && i<=9)
+            {
+                 selfDividingNumbers.push_back(i);
+            } 
+            else
+            {
+                bool isDiv=true;
+                vector<int> digits;
+                int temp = i;
+                while(temp>0)
+                {
+                    digits.push_back(temp%10);
+                    temp/=10;
+                }
+                
+                                
+               for (int j =0;j<digits.size();j++)
+               {
+                   if(!(digits[j] != 0 && i%digits[j]==0))
+                       isDiv=false;
+                   
+                   
+                       
+               }
+                if ( isDiv==true)
+                 selfDividingNumbers.push_back(i);
+               
+ 
+            }
+                
+        }
+        return selfDividingNumbers;
+        
+    }
+};
